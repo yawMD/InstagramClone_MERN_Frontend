@@ -1,0 +1,9 @@
+FireBase_URL= "gs://fir-c2088.appspot.com"
+
+apiKey: "AIzaSyAopk3GKSfx-k34azJEhdgvP4DcV1VV9_M",
+  authDomain: "fir-c2088.firebaseapp.com",
+  projectId: "fir-c2088",
+  storageBucket: "fir-c2088.appspot.com",
+  messagingSenderId: "815359735510",
+  appId: "1:815359735510:web:90811f29f22cac4c74bb77",
+  measurementId: "G-PQQ0VQBQN1"

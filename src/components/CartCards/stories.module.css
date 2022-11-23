@@ -1,0 +1,31 @@
+.imageDiv{
+    width: 18%;
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+}
+.imageDiv p{
+    margin-top:2px;
+    font-size:14px;
+}
+.image{
+    display: inline-block;
+    /* width: 70%;
+    height:auto; */
+  border-radius: 50%;
+  border-style: solid;
+  width: 50px;
+height: 50px;
+  border-width: 3px;
+  border-color: rgb(255, 0, 187);
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events:none;
+}
+.image>img{
+    border-radius:50%;
+    width: 50px;
+height: 50px;
+}

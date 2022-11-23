@@ -1,0 +1,42 @@
+.Post{
+    border: 1px solid  rgb(224, 224, 224);
+    border-radius:10px ;
+    margin: 10px 0;
+}
+
+.headings{
+    display:flex;
+    background:white;
+    border-radius:10px 10px  0 0  ;
+   
+}
+.headings img{
+    border-radius: 50%;
+    width:40px;
+    height:40px;
+    padding:5px
+}
+.loveIcons{
+    padding-right:7px;
+}
+.commIcon{
+    color: black;
+    padding-right:7px;
+}
+.headings p{
+    font-size:11px;
+    line-height: 0;
+    margin-top:-7px;
+}
+.Name{
+    line-height:0;
+}
+.icons{
+    display:flex;
+    justify-content:space-between;
+}
+.likes{
+    display:flex;
+    flex-direction:column;
+    padding:15px;
+}

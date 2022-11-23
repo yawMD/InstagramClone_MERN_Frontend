@@ -1,0 +1,83 @@
+.topfirst{
+    width:70%;
+    margin: 0 auto;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Name{
+    display:flex;
+    align-items: center;
+    text-align: left;
+}
+.profName{
+    font-size:30px
+}
+.Name button{
+    height:25px;
+    margin: 0 30px;
+    background:white;
+    border:1px solid rgb(205, 203, 203);
+    border-radius: 5px
+}
+.image{
+    width:30%;
+    margin:70px 5px 0 0;
+}
+
+.notimage{
+    width:50%;
+    padding:20px;
+}
+.posts{
+    display:flex;
+    align-items:center;
+    
+}
+.posts h3{
+    margin-right: 10px;
+}
+.posts p{
+    margin-right: 10px;
+}
+.memories{
+    width: 70%;
+    margin:0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+.imgDiv{
+    align-items: center;
+    padding: 0 30px 30px 30px
+}
+.imgDiv p{
+    padding:0 15px
+}
+.imgDiv img{
+    border-radius: 50%;
+}
+.list{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0 auto;
+    width:70%;
+    text-align: center;
+    padding:10px;
+}
+.list a{
+    text-decoration: none;
+    color: black;
+    padding:20px;
+    font-size:12px;
+}
+.final { 
+    margin:0 auto;
+    width:70%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    height: auto;
+    overflow: auto;
+    padding-bottom: 50px;
+}

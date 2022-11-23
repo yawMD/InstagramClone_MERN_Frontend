@@ -1,0 +1,57 @@
+.header{
+    border-bottom: 1px solid rgb(218, 225, 231);
+}
+.Nav{
+    display:flex;
+    justify-content: space-between;
+    margin:0 auto;
+    align-items: center;
+    width:75%;
+}
+.input{
+    background:rgb(233, 235, 236);
+    width:30%;
+    padding:10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:5px;
+    border-radius:5px;
+    display:flex;
+}
+
+.input input{
+    width:100%;
+    border:none;
+    background:rgb(233, 235, 236);
+    outline:none;
+}
+.homeicon{
+    padding:0 10px;
+    width:25px;
+    height:25px;
+}
+.img{
+    border-radius:50%;
+    padding:0 10px;
+    width:25px;
+    height:25px;
+}
+.logmenu{
+    position:relative;
+}
+.hovBar{
+    cursor:pointer;
+}
+.absolutes{
+    margin:0 auto;
+    width: 200px;
+    position:absolute;
+    background:white;
+    transition: all ease-in-out;
+    border:1px solid black;
+}
+.grid a{
+    text-decoration: none;
+    color:black;
+}
