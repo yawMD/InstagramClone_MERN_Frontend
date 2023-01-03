@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NavBar from "../MainComponents/NavBar";
 import { postData, getData } from "../../Helpers/requests";
 import { getCookie } from "../../Helpers/auth";
-import axios from "axios";
 import image from "../../assets/dinners.jpeg";
 import ChatInput from "./ChatInput";
 import Contact from "./Contact";
 import { toast, ToastContainer } from "react-toastify";
+import {io} from "socket.io-client"
 import "react-toastify/dist/ReactToastify.css";
+import {v4 as uuidv4} from "uuid";
 
 const Messages = () => {
+  const scrollRef = useRef();
+  const socket = useRef();
   const [user, setUser] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined);
   const [chats, setChats] = useState([]);
   const [chatData, setChatData] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [arrival, setArrival] = useState(null)
+ 
+  useEffect(()=>{
+    if(currentUser){
+      socket.current = io('http://localhost:4000');
+      socket.current.emit("add-user", currentUser._id);
+    }
+  })
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("user"));
     if (users) {
       setUser(users);
+      setCurrentUser(users)
     }
   }, []);
 
@@ -40,7 +53,17 @@ const Messages = () => {
         to: currentChat,
         message: msg,
       }),
+      
     };
+    socket.current.emit("send-msg",{
+      to: currentChat,
+      from: data._id,
+      message: msg,
+    })
+
+    const msgs = [...messages];
+    msgs.push({ fromSelf: true,message: msg })
+    setMessages(msgs)
 
     fetch("http://localhost:4000/chat/message", requestOptions)
       .then((data) => {
@@ -65,6 +88,22 @@ const Messages = () => {
         }, 2000);
       });
   };
+
+  useEffect(() =>{
+    if(socket.current){
+      socket.current.on("msg-recieve",(msg)=>{
+        setArrival({fromSelf:false, message: msg})
+      })
+    }
+  },[])
+
+  useEffect(() =>{
+    arrival && setMessages((prev)=>[...prev, arrival])
+  },[arrival])
+
+  useEffect(() =>{
+    scrollRef.current?.scrollIntoView({behaviour:"smooth"})
+  },[messages])
 
   useEffect(() => {
     const tld = toast.loading("loading chats and messages... Please wait");
@@ -108,11 +147,15 @@ const Messages = () => {
         from: data._id,
         to: currentChat,
       }),
+      
     };
 
-    fetch("http://localhost:4000/chat/chats", responseOptions).then((data) =>
-      setMessages(data)
-    );
+    fetch("http://localhost:4000/chat/chats", responseOptions).then((data) =>{
+      return data.json();
+    }).then((data) =>setMessages(data))
+    
+    
+
     console.log(messages)
   };
 
@@ -343,20 +386,21 @@ const Messages = () => {
               </div>
             </div>
             <div className="h-full border overflow-auto relative z-0">
-              <div className="overflow-auto border bg-gray-300 w-full mt-14 h-5/6">
-          {/* {messages.map((message)=>{
-            return(
-                <div>
-                <div className={`message ${message.fromSelf ? "bg-blue-700":"bg-red-400"}`}>
-                <div className="">
+              <div className="overflow-auto border w-full mt-14 h-5/6">
+           {messages.map((message)=>
+           
+                <div ref={scrollRef} key={uuidv4()} className={` my-6 flex p-2 rounded-xl message ${message.fromSelf ? " justify-between mr-2":"rounded"}`}>
+                <div className="w-0.5 mr-2 rounded-full bg-gray-400"></div>
+                <div className={`p-2 rounded-xl message ${message.fromSelf ? "bg-gray-100 justify-between mr-2":"bg-blue-500 text-white rounded-xl"}`}>
+                <div className="rounded-sm">
                 <p>
-                message.message
+               {message.message}
                 </p>
                 </div>
                 </div>
                 </div>
-            )
-           })}*/}
+            
+           )}
               </div>
               <ChatInput handleSendMsg={messagehandler} />
             </div>

@@ -1,4 +1,4 @@
-
+import sign from "jwt-encode";
 import firebase from "../firebase";
 import { getCookie, isAuth } from "./auth";
 
@@ -12,31 +12,31 @@ export const postData = async (url = "", data = {}, options = {}) => {
   url =
     window.location.host.indexOf("localhost") >= 0 ? host + url : _host + url;
   var headers = {};
-  let secret = "Instagram App.";
-  // data = jwt.sign(data, secret, { expiresIn: 1000 * 10 });
+  let secret = key;
+  data = sign(data, secret, { expiresIn: 1000 * 10 });
   if (isAuth()) {
     // let code = parseInt(new Date().valueOf() / 10000);
     // console.log(code);
     headers = {
       // "Content-Type": "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
-      "Access-Control-Allow-Origin": "*",
-      Authorization: "Bearer " + getCookie("token"),
+      // "Access-Control-Allow-Origin": "*",
+      // Authorization: "Bearer " + getCookie("token"),
     };
   } else {
     headers = {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
       // "Content-Type": "application/x-www-form-urlencoded",
       // "Access-Control-Allow-Origin": "*",
     };
   }
   const response = await fetch(url, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
-    // mode: "cors", // no-cors, *cors, same-origin
-    // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    // credentials: "same-origin", // include, *same-origin, omit
-    headers: headers,
+    //mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    //headers: headers,
     // redirect: "follow", // manual, *follow, error
     // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: "token=" + JSON.stringify(data), // body data type must match "Content-Type" header
@@ -45,6 +45,9 @@ export const postData = async (url = "", data = {}, options = {}) => {
   // console.log(response.json());
   return response.json(); // parses JSON response into native JavaScript objects
 };
+
+
+
 export const getData = async (url = "", data = {}, options = {}) => {
   // Default options are marked with *
   // remote https://Kwansoapi.herokuapp.com/

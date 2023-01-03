@@ -39,7 +39,7 @@ function Home() {
           //   setError(true);
           //   toast.error("There was an error loading page data");
           // });
-    },[])
+    },[posts,])
   
     return (
       <React.Fragment>

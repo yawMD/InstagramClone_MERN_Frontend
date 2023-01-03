@@ -148,7 +148,7 @@ useEffect(() => {
       </div>
 
       <div className={profile.final}>
-      {posts && posts.map((posts)=>(<img key={posts._id} src={posts.media} width="100%" height="400px" alt=""/>))}
+      {posts && posts.map((posts)=>(<img key={posts._id} src={posts.videoImage} width="100%" height="400px" alt=""/>))}
       <img src={image} width="100%" height="400px" alt=""/>
       </div>
     </React.Fragment>

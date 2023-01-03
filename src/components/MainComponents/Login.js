@@ -47,37 +47,52 @@ const Login = () => {
     console.log(email,password)
 
     if (email && password) {
-      const tld = toast.loading("Logging you in... Please wait");
-      postData("/user/login", { email, password }).then((data) => {
-        console.log(data);
-        if(data.error){
-          toast.update(tld, {
-            render: `Error: ${data.message} `,
-            type: "error",
-            isLoading: false,
-          });
-        }else{
+     const tld = toast.loading("Logging you in... Please wait");
+
+    try {
+
+      const res = await axios.post('http://localhost:4000/user/login', {email: email, password: password})
+
           toast.update(tld, {
             render: `Login Successful`,
             type: "success",
             isLoading: false,
           });
-          authenticate(data, () => {
-            console.log(data)
+          authenticate(res.data, () => {
+            console.log(res.data)
             let _d = isAuth();
             console.log(_d)
             if(_d){
               history.push("/");
             }
           })
-          // history.push("/");
-        }
-      }) 
-      .finally((e) => {
-        setTimeout(() => {
-          toast.dismiss(tld);
-        }, 2000);
-      });
+        
+    }catch(e) {
+      toast.update(tld, {
+              render: `Error: `,
+              type: "error",
+              isLoading: false,
+            });
+    }
+
+     
+   
+      // postData("/user/login", { email, password }).then((data) => {
+      //   console.log(data);
+      //   if(data.error){
+      //     toast.update(tld, {
+      //       render: `Error: ${data.message} `,
+      //       type: "error",
+      //       isLoading: false,
+      //     });
+      //   }else{
+      
+      // }) 
+      // .finally((e) => {
+      //   setTimeout(() => {
+      //     toast.dismiss(tld);
+      //   }, 2000);
+      // });
     }
   };
 
