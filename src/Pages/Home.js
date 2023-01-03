@@ -48,7 +48,7 @@ function Home() {
         <Main>
           <Poststories>
             <StorySection />
-          {posts && posts.map(post => <Posts key={post._id} name={post.name} media={post.videoImage} caption={post.caption}/>)} 
+          {posts && posts.map(post => <Posts key={post._id} name={post.name} media={post.media} caption={post.caption}/>)} 
           {posts.length===0 && !error && load.map((e)=>(<div className=" rounded-xl bg-gray-50 my-4 border-solid border border-gray-100">
           <div className="flex bg-gray-100 my-4">
           <div className="w-8 rounded-full bg-gray-300 mx-4 animate-pulse h-8"></div>

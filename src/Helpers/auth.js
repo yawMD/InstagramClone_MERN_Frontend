@@ -35,6 +35,7 @@ export const removeLocalStorage = (key) => {
 
 export const authenticate = (response, next) => {
   // console.log(response)
+  console.log(response)
   setCookie("token", response.data.token);
   setLocalStorage("user", decodeToken(response.data.token).user);
   console.log(decodeToken(response.data.token).user);
