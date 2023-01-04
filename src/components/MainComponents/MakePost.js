@@ -26,6 +26,7 @@ export default function MakePost(props) {
         const users = JSON.parse(localStorage.getItem('user'));
         if (users) {
          setUserId(users._id);
+         setName(users.username)
         }
       }, []);
 
@@ -53,7 +54,7 @@ export default function MakePost(props) {
       };
         
         console.log("clicked")
-        fetch("http://localhost:4000/user/timeline",requestOptions).then((data) => {
+        fetch("https://fillyinst.uw.r.appspot.com/user/stories",requestOptions).then((data) => {
             console.log(data);
             if(data.error){
               toast.update(tld, {

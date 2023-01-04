@@ -65,7 +65,7 @@ const Messages = () => {
     msgs.push({ fromSelf: true,message: msg })
     setMessages(msgs)
 
-    fetch("http://localhost:4000/chat/message", requestOptions)
+    fetch("https://fillyinst.uw.r.appspot.com/chat/message", requestOptions)
       .then((data) => {
         console.log(data);
         if (data.error) {
@@ -150,7 +150,7 @@ const Messages = () => {
       
     };
 
-    fetch("http://localhost:4000/chat/chats", responseOptions).then((data) =>{
+    fetch("https://fillyinst.uw.r.appspot.com/chat/chats", responseOptions).then((data) =>{
       return data.json();
     }).then((data) =>setMessages(data))
     

@@ -16,7 +16,6 @@ const StorySection = (props)=>{
     const story = useSelector((state)=>state.story)
     const dispatch = useDispatch()
     
-    console.log(story)
 
     useEffect(() => {
         getData("/user/stories")
@@ -44,7 +43,7 @@ const StorySection = (props)=>{
         <ToastContainer />
         
         {story && (<StoryDisp avatar={image} close={storyHandler}/>)}
-        {posts.map((post)=>(<Stories statehandler={imagehandler} image={post.videoImage} key={post._id}   onClick={storyHandler}/>))}
+        {posts.map((post)=>(<Stories statehandler={imagehandler} image={post.media} key={post._id}   onClick={storyHandler}/>))}
      
         </div>
     )

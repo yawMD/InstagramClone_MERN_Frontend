@@ -2,8 +2,8 @@ import sign from "jwt-encode";
 import firebase from "../firebase";
 import { getCookie, isAuth } from "./auth";
 
-const _host = "https://fillyapi.herokuapp.com";
-const host = "http://localhost:4000";
+const _host = "https://fillyinst.uw.r.appspot.com/";
+const host = "https://fillyinst.uw.r.appspot.com/";
 
 export const key = "Instagram App.";
 

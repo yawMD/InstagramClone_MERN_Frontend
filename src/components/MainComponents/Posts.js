@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import world from "../../assets/khebab.jpg";
 import post from "./post.module.css";
 // import LoveIcon from "../icons/LoveIcon";
@@ -7,8 +7,12 @@ import SendIcon from "../icons/send-icon";
 import BookMark from "../icons/bookmark-icon";
 import NotFilled from "../icons/heartfilled-icon"
 import RedHeart from "../icons/redheart-icon";
+import moment from "moment/moment";
+import { format, subDays, startOfDay, setDate } from 'date-fns'
+
 
 const Posts = (props) => {
+
   const [liked,setLiked] = useState(false)
 
   const likedHandler=()=>{
@@ -56,7 +60,7 @@ const Posts = (props) => {
             Wow!!!🔥🔥🔥🔥🔥🔥🔥#Wow🔥🔥🔥🔥🔥🔥🔥 I don’t care what nobody say,
             it’s your time! That was 🔥🔥🔥🔥🔥🔥🔥
           </p>
-          <p>1 DAY AGO</p>
+          <p className="text-xs text-gray-700 pt-8">{props.date}</p>
         </div>
       </div>
     </div>

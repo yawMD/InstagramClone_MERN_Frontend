@@ -75,7 +75,7 @@ const SignUp = () => {
       console.log(__d);
       const tld =(()=> toast.loading("Creating your account... Please wait"),[2000]);
 
-      fetch("http://localhost:4000/user/users",
+      fetch("https://fillyinst.uw.r.appspot.com/user/users",
 {
     headers: {
       'Accept': 'application/json',
