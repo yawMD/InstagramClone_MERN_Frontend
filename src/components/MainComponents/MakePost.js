@@ -54,7 +54,7 @@ export default function MakePost(props) {
       };
         
         console.log("clicked")
-        fetch("https://fillyinst.uw.r.appspot.com/user/stories",requestOptions).then((data) => {
+        fetch("https://fillyinst.uw.r.appspot.com/user/timeline",requestOptions).then((data) => {
             console.log(data);
             if(data.error){
               toast.update(tld, {
