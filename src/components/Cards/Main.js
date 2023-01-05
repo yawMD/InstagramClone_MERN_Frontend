@@ -1,9 +1,8 @@
 import React from 'react';
-import main from '../Cards/main.module.css'
 
 const Main = (props)=>{
     return(
-        <div className={main.main}>
+        <div className="flex m-auto justify-center w-4/5 h-auto">
         {props.children}
         </div>
     )

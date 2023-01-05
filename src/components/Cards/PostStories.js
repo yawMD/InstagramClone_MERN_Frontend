@@ -1,9 +1,8 @@
 import React from 'react';
-import main from '../Cards/poststories.module.css'
 
 const Poststories = (props)=>{
     return(
-        <div className={main.main}>
+        <div className="flex flex-col m-4 md:w-2/5 py-5 pl-5 h-auto w-full">
         {props.children}
         </div>
     )
