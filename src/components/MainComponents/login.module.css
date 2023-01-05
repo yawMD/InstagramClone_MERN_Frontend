@@ -95,3 +95,17 @@
 .sign-socials img{
     margin:5px;
 }
+
+@media screen and (max-width: 680px) {
+
+        .image{
+            display: none;
+        }
+        .overallpanel{
+            width:100%
+        }
+        .container{
+            width:90%;
+        }
+    
+  }
